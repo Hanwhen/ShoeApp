@@ -1,4 +1,4 @@
-package com.codingstuff.shoeapp.views;
+package com.example.shoeapp.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.codingstuff.shoeapp.R;
-import com.codingstuff.shoeapp.utils.adapter.ShoeItemAdapter;
-import com.codingstuff.shoeapp.utils.model.ShoeCart;
-import com.codingstuff.shoeapp.utils.model.ShoeItem;
-import com.codingstuff.shoeapp.viewmodel.CartViewModel;
+import com.example.shoeapp.utils.adapter.ShoeItemAdapter;
+import com.example.shoeapp.utils.model.ShoeCart;
+import com.example.shoeapp.utils.model.ShoeItem;
+import com.example.shoeapp.viewmodel.CartViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

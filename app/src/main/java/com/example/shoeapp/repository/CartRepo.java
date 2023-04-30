@@ -1,12 +1,12 @@
-package com.codingstuff.shoeapp.repository;
+package com.example.shoeapp.repository;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.codingstuff.shoeapp.dao.CartDAO;
-import com.codingstuff.shoeapp.database.CartDatabase;
-import com.codingstuff.shoeapp.utils.model.ShoeCart;
+import com.example.shoeapp.dao.CartDAO;
+import com.example.shoeapp.database.CartDatabase;
+import com.example.shoeapp.utils.model.ShoeCart;
 
 import java.util.List;
 import java.util.concurrent.Executor;

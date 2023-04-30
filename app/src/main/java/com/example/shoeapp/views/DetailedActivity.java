@@ -1,4 +1,4 @@
-package com.codingstuff.shoeapp.views;
+package com.example.shoeapp.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.codingstuff.shoeapp.R;
-import com.codingstuff.shoeapp.utils.model.ShoeCart;
-import com.codingstuff.shoeapp.utils.model.ShoeItem;
-import com.codingstuff.shoeapp.viewmodel.CartViewModel;
+import com.example.shoeapp.R;
+import com.example.shoeapp.utils.model.ShoeCart;
+import com.example.shoeapp.utils.model.ShoeItem;
+import com.example.shoeapp.viewmodel.CartViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
