@@ -13,11 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 
 
-
 import com.example.shoeapp.R;
 import com.example.shoeapp.utils.adapter.CartAdapter;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.viewmodel.CartViewModel;
+
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.codingstuff.shoeapp.R;
+import com.example.shoeapp.R;
 import com.example.shoeapp.utils.adapter.ShoeItemAdapter;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.utils.model.ShoeItem;
