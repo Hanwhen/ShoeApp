@@ -1,5 +1,6 @@
 package com.example.shoeapp.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
@@ -31,11 +33,23 @@ public class DetailedActivity extends AppCompatActivity {
     private ShoeItem shoe;
     private CartViewModel viewModel;
     private List<ShoeCart> shoeCartList;
-
+    boolean nightMODE;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        nightMODE = sharedPreferences.getBoolean("night",false); //light mode is default mode
+
+        if(nightMODE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
+
+        if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
         shoe = getIntent().getParcelableExtra("shoeItem");
         initializeVariables();

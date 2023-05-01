@@ -1,6 +1,7 @@
 package com.example.shoeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -33,13 +35,24 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
     private CardView cardView;
     private CartAdapter cartAdapter;
 
+    boolean nightMODE;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        nightMODE = sharedPreferences.getBoolean("night",false); //light mode is default mode
+        if(nightMODE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        initializeVariables();
+        if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
+        initializeVariables();
 
         cartViewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
             @Override

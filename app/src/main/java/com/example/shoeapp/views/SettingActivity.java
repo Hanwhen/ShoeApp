@@ -27,18 +27,21 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        if(getSupportActionBar()!=null) getSupportActionBar().hide();
+       if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
         switcher =findViewById(R.id.switcher);
+
 
         //we use shard preference to save mode if exit the app and go back again
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMODE = sharedPreferences.getBoolean("night",false); //light mode is default mode
 
-        if(nightMODE){
+
+        if(nightMODE) {
             switcher.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+
 
         switcher.setOnClickListener(new View.OnClickListener() {
             @Override
