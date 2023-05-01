@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.DetailedActivity">
+    tools:context=".views.DetailedActivity"
+    style="@style/SCREEN">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -35,6 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="55dp"
         android:text="TextView"
+        style="@style/TEXT"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -48,6 +50,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        style="@style/TEXT"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +65,7 @@
         android:paddingEnd="16dp"
         android:text="Lorem ipsum dolor sit amet, consectetuer  adipiscing elit. Aenean commodo ligula "
         android:textSize="16sp"
+        style="@style/TEXT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailActivityShoeBrandNameTv" />
@@ -71,6 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Add to Cart"
+        style="@style/TEXT"
         android:textAllCaps="false"
         android:textSize="17sp"
         android:background="@color/black"
@@ -86,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
+        style="@style/TEXT"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/black"

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/light_gray"
     android:id="@+id/coordinatorLayout"
-    tools:context=".views.MainActivity">
+    tools:context=".views.MainActivity"
+    style="@style/SCREEN">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -38,6 +39,7 @@
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    style="@style/TEXT"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -46,13 +48,25 @@
 
                 <ImageView
                     android:id="@+id/cartIv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_baseline_shopping_cart_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:srcCompat="@drawable/baseline_settings_24"
+                    android:onClick="Clicked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/cartIv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="OnClick" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </Toolbar>
 

@@ -1,6 +1,7 @@
 package com.example.shoeapp.views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,16 +9,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.shoeapp.R;
+import com.example.shoeapp.setting.UserSettings;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.utils.model.ShoeItem;
 import com.example.shoeapp.viewmodel.CartViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DetailedActivity extends AppCompatActivity {
 
@@ -107,4 +111,34 @@ public class DetailedActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
     }
+//    private void loadSharedPreferences()
+//    {
+//        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);
+//        String theme = sharedPreferences.getString(UserSettings.CUSTOM_THEME, UserSettings.LIGHT_THEME);
+//        settings.setCustomTheme(theme);
+//        updateView();
+//    }
+//    private void updateView()
+//    {
+//        final int black = ContextCompat.getColor(this, R.color.black);
+//        final int white = ContextCompat.getColor(this, R.color.white);
+//
+//        if(settings.getCustomTheme().equals(UserSettings.DARK_THEME))
+//        {
+//            titleTV.setTextColor(white);
+//            themeTV.setTextColor(white);
+//            themeTV.setText("Dark");
+//            parentView.setBackgroundColor(black);
+//            themeSwitch.setChecked(true);
+//        }
+//        else
+//        {
+//            titleTV.setTextColor(black);
+//            themeTV.setTextColor(black);
+//            themeTV.setText("Light");
+//            parentView.setBackgroundColor(white);
+//            themeSwitch.setChecked(false);
+//        }
+//
+//    }
 }

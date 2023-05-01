@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
     private CoordinatorLayout coordinatorLayout;
     private ImageView cartImageView;
 
+    private ImageView settingImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +47,22 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         adapter.setShoeItemList(shoeItemList);
         recyclerView.setAdapter(adapter);
 
-
         cartImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
+
+
+        settingImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+            }
+        });
     }
+
 
     @Override
     protected void onResume() {
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
     private void initializeVariables() {
 
         cartImageView = findViewById(R.id.cartIv);
+        settingImageView = findViewById(R.id.setting);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         shoeCartList = new ArrayList<>();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
@@ -145,4 +156,34 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                     }
                 }).show();
     }
+//    private void loadSharedPreferences()
+//    {
+//        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);
+//        String theme = sharedPreferences.getString(UserSettings.CUSTOM_THEME, UserSettings.LIGHT_THEME);
+//        settings.setCustomTheme(theme);
+//        updateView();
+//    }
+//    private void updateView()
+//    {
+//        final int black = ContextCompat.getColor(this, R.color.black);
+//        final int white = ContextCompat.getColor(this, R.color.white);
+//
+//        if(settings.getCustomTheme().equals(UserSettings.DARK_THEME))
+//        {
+//            titleTV.setTextColor(white);
+//            themeTV.setTextColor(white);
+//            themeTV.setText("Dark");
+//            coordinatorLayout.setBackgroundColor(black);
+//            themeSwitch.setChecked(true);
+//        }
+//        else
+//        {
+//            titleTV.setTextColor(black);
+//            themeTV.setTextColor(black);
+//            themeTV.setText("Light");
+//            coordinatorLayout.setBackgroundColor(white);
+//            themeSwitch.setChecked(false);
+//        }
+//
+//    }
 }
