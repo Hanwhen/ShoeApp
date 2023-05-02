@@ -47,7 +47,7 @@
         android:id="@+id/cartActivityCheckoutBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Refresh"
+        android:text="Checkout"
         style="@style/BUTTON"
         android:textAllCaps="false"
         android:textSize="17sp"
