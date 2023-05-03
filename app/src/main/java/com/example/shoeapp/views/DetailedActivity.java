@@ -1,8 +1,12 @@
 package com.example.shoeapp.views;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +30,7 @@ import java.util.List;
 
 
 public class DetailedActivity extends AppCompatActivity {
+    BroadcastReceiver broadcastReceiver; //NEEDED
 
     private ImageView shoeImageView;
     private TextView shoeNameTV, shoeBrandNameTV, shoePriceTV;
@@ -48,6 +53,10 @@ public class DetailedActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
+
+        //NEED THIS
+        broadcastReceiver = new ConnectionReceiver(); //NEEDED
+        registerNetworkBroadCast(); //NEEDED
 
         if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
@@ -72,6 +81,20 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
+    }
+    //NEEDED
+    public void registerNetworkBroadCast() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    //NEEDED
+    protected void unregisterNetwork(){
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 
     private void insertToRoom(){
