@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +21,6 @@ import android.widget.TextView;
 
 
 import com.example.shoeapp.R;
-import com.example.shoeapp.setting.UserSettings;
 import com.example.shoeapp.utils.adapter.CartAdapter;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.viewmodel.CartViewModel;
@@ -55,7 +53,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        broadcastReceiver = new ConnectionReceiver(); //NEEDED
+        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
         registerNetworkBroadCast(); //NEEDED
 
         if(getSupportActionBar()!=null) getSupportActionBar().hide();

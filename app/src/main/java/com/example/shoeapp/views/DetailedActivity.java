@@ -15,12 +15,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.shoeapp.R;
-import com.example.shoeapp.setting.UserSettings;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.utils.model.ShoeItem;
 import com.example.shoeapp.viewmodel.CartViewModel;
@@ -55,7 +53,7 @@ public class DetailedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detailed);
 
         //NEED THIS
-        broadcastReceiver = new ConnectionReceiver(); //NEEDED
+        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
         registerNetworkBroadCast(); //NEEDED
 
         if(getSupportActionBar()!=null) getSupportActionBar().hide();

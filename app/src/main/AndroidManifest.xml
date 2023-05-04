@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoeApp"
         >
-        <receiver android:name=".views.ConnectionReceiver"
+        <receiver android:name=".views.ConnectionReceiverActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.net.CONNECTIVITY_CHANGE"/>

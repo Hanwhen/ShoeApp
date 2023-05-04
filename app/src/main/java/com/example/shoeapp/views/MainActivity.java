@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         setContentView(R.layout.activity_main);
 
         //NEED THIS
-        broadcastReceiver = new ConnectionReceiver(); //NEEDED
+        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
         registerNetworkBroadCast(); //NEEDED
 
         if(getSupportActionBar()!=null) getSupportActionBar().hide();

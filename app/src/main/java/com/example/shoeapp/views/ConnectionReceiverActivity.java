@@ -10,14 +10,11 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.shoeapp.R;
 
-import java.util.logging.LogRecord;
-
-public class ConnectionReceiver extends BroadcastReceiver {
+public class ConnectionReceiverActivity extends BroadcastReceiver {
     Context mContext;
     Dialog dialog;
 
