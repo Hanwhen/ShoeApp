@@ -1,22 +1,17 @@
 package com.example.shoeapp.views;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
-import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.splashscreen.SplashScreenViewProvider;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.ShoeClickedListeners {
-    BroadcastReceiver broadcastReceiver; //NEEDED
 
     private RecyclerView recyclerView;
     private List<ShoeItem> shoeItemList;
@@ -72,16 +66,10 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //NEED THIS
-        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
-        registerNetworkBroadCast(); //NEEDED
-
         if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
         initializeVariables();
         setUpList();
-
-
 
 
         adapter.setShoeItemList(shoeItemList);
@@ -93,43 +81,30 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
+
+
         settingImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
             }
         });
+
+
     }
-    //NEEDED
-    public void registerNetworkBroadCast() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        }
-    }
-    //NEEDED
-    protected void unregisterNetwork(){
-        try{
-            unregisterReceiver(broadcastReceiver);
-        }catch (IllegalArgumentException e){
-            e.printStackTrace();
-        }
-    }
+
 
 
     @Override
     protected void onResume() {
         super.onResume();
+
         viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
             @Override
             public void onChanged(List<ShoeCart> shoeCarts) {
                 shoeCartList.addAll(shoeCarts);
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     private void setUpList() {
@@ -212,35 +187,4 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                     }
                 }).show();
     }
-//    private void loadSharedPreferences()
-//    {
-//        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);
-//        String theme = sharedPreferences.getString(UserSettings.CUSTOM_THEME, UserSettings.LIGHT_THEME);
-//        settings.setCustomTheme(theme);
-//        updateView();
-//    }
-//    private void updateView()
-//    {
-//        final int black = ContextCompat.getColor(this, R.color.black);
-//        final int white = ContextCompat.getColor(this, R.color.white);
-//
-//        if(settings.getCustomTheme().equals(UserSettings.DARK_THEME))
-//        {
-//            titleTV.setTextColor(white);
-//            themeTV.setTextColor(white);
-//            themeTV.setText("Dark");
-//            coordinatorLayout.setBackgroundColor(black);
-//            themeSwitch.setChecked(true);
-//        }
-//        else
-//        {
-//            titleTV.setTextColor(black);
-//            themeTV.setTextColor(black);
-//            themeTV.setText("Light");
-//            coordinatorLayout.setBackgroundColor(white);
-//            themeSwitch.setChecked(false);
-//        }
-//
-//    }
-
 }
