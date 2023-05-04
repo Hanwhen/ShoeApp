@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoeapp.R;
 
 public class SplashActivity extends AppCompatActivity {
-    // Splash screen timer
     private static final int SPLASH_TIME_OUT = 3000;
 
     @Override

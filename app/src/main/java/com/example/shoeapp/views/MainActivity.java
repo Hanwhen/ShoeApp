@@ -28,11 +28,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-import android.window.SplashScreen;
-
 public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.ShoeClickedListeners {
 
     private RecyclerView recyclerView;
@@ -194,11 +189,6 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
     }
 
 //
-
-
-
-
-
 //    private void loadSharedPreferences()
 //    {
 //        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);
