@@ -33,33 +33,11 @@
 
     </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView7"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play Sample Music Below"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn1"
-            android:onClick="play"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn2"
-            android:onClick="pause"/>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn3"
-            android:onClick="stop"/>
+            app:srcCompat="@drawable/add_to_cart" />
 
     </LinearLayout>
 </FrameLayout>
