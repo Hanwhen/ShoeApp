@@ -1,8 +1,12 @@
 package com.example.shoeapp.views;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.ShoeClickedListeners {
+    BroadcastReceiver broadcastReceiver; //NEEDED
 
     private RecyclerView recyclerView;
     private List<ShoeItem> shoeItemList;
@@ -65,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //NEED THIS
+        broadcastReceiver = new ConnectionReceiver(); //NEEDED
+        registerNetworkBroadCast(); //NEEDED
+
         if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
         initializeVariables();
@@ -91,18 +100,36 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
             }
         });
     }
+    //NEEDED
+    public void registerNetworkBroadCast() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    //NEEDED
+    protected void unregisterNetwork(){
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-
         viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
             @Override
             public void onChanged(List<ShoeCart> shoeCarts) {
                 shoeCartList.addAll(shoeCarts);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void setUpList() {
