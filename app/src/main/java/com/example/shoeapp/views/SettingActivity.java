@@ -2,21 +2,23 @@ package com.example.shoeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 
 
-import com.example.shoeapp.setting.UserSettings;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.example.shoeapp.R;
 public class SettingActivity extends AppCompatActivity {
+
+    BroadcastReceiver broadcastReceiver; //NEEDED
     Switch switcher;
     boolean nightMODE;
     SharedPreferences sharedPreferences;
@@ -26,6 +28,10 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        //NEED THIS
+        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
+        registerNetworkBroadCast(); //NEEDED
 
        if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
@@ -59,5 +65,20 @@ public class SettingActivity extends AppCompatActivity {
                 editor.apply();
             }
         });
+    }
+
+    //NEEDED
+    public void registerNetworkBroadCast() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    //NEEDED
+    protected void unregisterNetwork(){
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 }

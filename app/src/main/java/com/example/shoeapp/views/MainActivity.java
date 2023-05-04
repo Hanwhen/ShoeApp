@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.splashscreen.SplashScreenViewProvider;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -72,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         setUpList();
 
 
+
+
         adapter.setShoeItemList(shoeItemList);
         recyclerView.setAdapter(adapter);
 
@@ -89,10 +90,7 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
             }
         });
-
-
     }
-
 
 
     @Override
@@ -187,8 +185,6 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                     }
                 }).show();
     }
-
-//
 //    private void loadSharedPreferences()
 //    {
 //        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);

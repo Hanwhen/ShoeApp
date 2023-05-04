@@ -4,21 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 
 import com.example.shoeapp.R;
-import com.example.shoeapp.setting.UserSettings;
 import com.example.shoeapp.utils.adapter.CartAdapter;
 import com.example.shoeapp.utils.model.ShoeCart;
 import com.example.shoeapp.viewmodel.CartViewModel;
@@ -27,6 +29,7 @@ import com.example.shoeapp.viewmodel.CartViewModel;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity implements CartAdapter.CartClickedListeners {
+    BroadcastReceiver broadcastReceiver; //NEEDED
 
     private RecyclerView recyclerView;
     private CartViewModel cartViewModel;
@@ -49,6 +52,9 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        broadcastReceiver = new ConnectionReceiverActivity(); //NEEDED
+        registerNetworkBroadCast(); //NEEDED
 
         if(getSupportActionBar()!=null) getSupportActionBar().hide();
 
@@ -76,6 +82,20 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
                 cardView.setVisibility(View.VISIBLE);
             }
         });
+    }
+    //NEEDED
+    public void registerNetworkBroadCast() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    //NEEDED
+    protected void unregisterNetwork(){
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 
 

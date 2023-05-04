@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/SCREEN"
@@ -14,16 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
+
             <TextView
                 style="@style/TEXT"
-                android:layout_width="0dp"
+                android:layout_width="289dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Toolbar"
-                android:textSize="18sp"
                 android:gravity="center_vertical"
                 android:padding="10dp"
-                android:textStyle="bold"/>
+                android:text="Settings - Change Theme"
+                android:textSize="18sp"
+                android:textStyle="bold" />
             <Switch
                 android:id="@+id/switcher"
                 android:layout_width="50dp"
@@ -31,23 +32,9 @@
                 android:gravity="center"/>
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text"
-        style="@style/TEXT"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:padding="8dp"
-        android:layout_margin="8dp"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Button"
-            style="@style/BUTTON"
-            android:layout_margin="8dp"/>
+
+
+
     </LinearLayout>
 </FrameLayout>
 
