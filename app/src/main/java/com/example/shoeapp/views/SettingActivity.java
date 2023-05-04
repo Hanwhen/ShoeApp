@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Switch;
 
 import com.example.shoeapp.R;
 public class SettingActivity extends AppCompatActivity {
+
     BroadcastReceiver broadcastReceiver; //NEEDED
     Switch switcher;
     boolean nightMODE;
@@ -64,6 +66,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
+
     //NEEDED
     public void registerNetworkBroadCast() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){

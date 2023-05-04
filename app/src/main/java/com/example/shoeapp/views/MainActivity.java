@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -91,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
-
-
         settingImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -242,4 +242,5 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
 //        }
 //
 //    }
+
 }
