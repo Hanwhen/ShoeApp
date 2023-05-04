@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ShoeApp</string>
     <string name="text">Hello World! aasdioasdjasjdoasidoczpxozmcpozmpxompoxovnoiniocopdoas</string>
+
+    <string name="btn1">PLAY</string>
+    <string name="btn2">PAUSE</string>
+    <string name="btn3">STOP</string>
 </resources>

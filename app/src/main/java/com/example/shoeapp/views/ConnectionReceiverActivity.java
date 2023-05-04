@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.shoeapp.R;
@@ -39,7 +40,6 @@ public class ConnectionReceiverActivity extends BroadcastReceiver {
             return false;
         }
     }
-
     public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,6 +47,20 @@ public class ConnectionReceiverActivity extends BroadcastReceiver {
         builder.setView(view);
 
         dialog = builder.create();
+        dialog.setCancelable(false); // Disable dialog dismissal by pressing outside of the dialog
+
+        Button fixButton = view.findViewById(R.id.fix_button);
+        fixButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isConnected(mContext)) {
+                    dialog.dismiss(); // Dismiss the dialog once connected
+                } else {
+                    Toast.makeText(mContext, "Please fix your WiFi first", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         dialog.show();
 
         // Check for network connection status every 2 seconds
@@ -55,12 +69,14 @@ public class ConnectionReceiverActivity extends BroadcastReceiver {
             @Override
             public void run() {
                 if (isConnected(mContext)) {
-                    dialog.dismiss(); // Dismiss the dialog once connected
+                    fixButton.setEnabled(true); // Enable the button once connected
                     handler.removeCallbacks(this); // Stop checking for connection status
                 } else {
                     handler.postDelayed(this, 2000); // Check again in 2 seconds
                 }
             }
         }, 2000); // Start checking after 2 seconds
+
+        fixButton.setEnabled(false); // Disable the button initially
     }
 }
