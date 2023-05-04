@@ -2,26 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
-Expand All
-	@@ -8,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoeApp"
         tools:targetApi="33">
-        >
-        <receiver android:name=".views.ConnectionReceiverActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.net.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
+
         <activity
-            android:name=".views.CartActivity"
-Expand All
-	@@ -18,16 +20,24 @@
+            android:name=".views.CartActivity"/>
+
         <activity
             android:name=".views.SettingActivity"
             android:exported="false" />

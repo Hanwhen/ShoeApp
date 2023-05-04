@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.splashscreen.SplashScreenViewProvider;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -71,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         setUpList();
 
 
-
-
         adapter.setShoeItemList(shoeItemList);
         recyclerView.setAdapter(adapter);
 
@@ -90,7 +89,10 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
             }
         });
+
+
     }
+
 
 
     @Override
@@ -185,34 +187,4 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
                     }
                 }).show();
     }
-//    private void loadSharedPreferences()
-//    {
-//        SharedPreferences sharedPreferences = getSharedPreferences(UserSettings.PREFERENCES, MODE_PRIVATE);
-//        String theme = sharedPreferences.getString(UserSettings.CUSTOM_THEME, UserSettings.LIGHT_THEME);
-//        settings.setCustomTheme(theme);
-//        updateView();
-//    }
-//    private void updateView()
-//    {
-//        final int black = ContextCompat.getColor(this, R.color.black);
-//        final int white = ContextCompat.getColor(this, R.color.white);
-//
-//        if(settings.getCustomTheme().equals(UserSettings.DARK_THEME))
-//        {
-//            titleTV.setTextColor(white);
-//            themeTV.setTextColor(white);
-//            themeTV.setText("Dark");
-//            coordinatorLayout.setBackgroundColor(black);
-//            themeSwitch.setChecked(true);
-//        }
-//        else
-//        {
-//            titleTV.setTextColor(black);
-//            themeTV.setTextColor(black);
-//            themeTV.setText("Light");
-//            coordinatorLayout.setBackgroundColor(white);
-//            themeSwitch.setChecked(false);
-//        }
-//
-//    }
 }
