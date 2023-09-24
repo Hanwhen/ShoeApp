@@ -11,6 +11,7 @@ import com.example.shoeapp.utils.model.ShoeCart;
 
 @Database(entities = {ShoeCart.class} , version = 1)
 public abstract class CartDatabase extends RoomDatabase {
+    //good to go
 
     public abstract CartDAO cartDAO();
     private static CartDatabase instance;
